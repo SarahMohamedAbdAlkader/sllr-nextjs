@@ -1,6 +1,6 @@
 "use client"; // This is a client component
 import useSWR from "swr";
-import { Card, message } from "antd";
+
 import { useRouter } from "next/router";
 import Head from "next/head";
 
@@ -70,23 +70,12 @@ const SlugPage = ({ params }) => {
         />
       </Head>
       {contextHolder}
-      <Card
-        hoverable
-        className="br-product-card"
-        cover={
-          <div className="br-product-card-image">
+      <div className="br-product-card-image">
             <img
               alt="product image"
               src={product?.images?.[0] || "/assets/icons/Product.svg"}
             />
           </div>
-        }
-      >
-        <Card.Meta
-          title={product?.name || "-"}
-          description={`${product?.defaultPrice || 0} EGP`}
-        />
-      </Card>
     </div>
   );
 };
