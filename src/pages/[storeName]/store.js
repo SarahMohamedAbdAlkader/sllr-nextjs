@@ -16,7 +16,7 @@ const useSharedState = (key, initial) => {
 };
 
 export default function StoreLayout({ params }) {
-  const { storeName } = params;
+  const { storeName } = params || { storeName: "" };
   const businessInfo = useSharedState(
     storeName && `https://api-stg.sllr.co/business/${storeName}`
   );
