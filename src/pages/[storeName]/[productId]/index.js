@@ -4,14 +4,8 @@ import useSWR from "swr";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
-message.config({
-  top: 100,
-  duration: 2,
-  maxCount: 1,
-  rtl: true,
-});
 
-const useSharedState = (key, messageApi) => {
+const useSharedState = (key) => {
   const fetcher = (url) => fetch(url).then((res) => res.json());
   const { data: state, isLoading, mutate: setState } = useSWR(key, fetcher);
   if (isLoading) return { isLoading };
@@ -29,12 +23,9 @@ const SlugPage = ({ params }) => {
   const router = useRouter();
   const { storeName, productId } = router.query;
 
-  const [messageApi, contextHolder] = message.useMessage();
-
   const product =
     useSharedState(
-      productId && `https://api-stg.sllr.co/products/v2/${productId}`,
-      messageApi
+      productId && `https://api-stg.sllr.co/products/v2/${productId}`
     ) || {};
 
   return (
