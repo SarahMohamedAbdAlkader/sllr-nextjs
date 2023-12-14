@@ -60,7 +60,6 @@ const SlugPage = ({ params }) => {
           }
         />
       </Head>
-      {contextHolder}
       <div className="br-product-card-image">
             <img
               alt="product image"
